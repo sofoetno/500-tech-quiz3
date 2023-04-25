@@ -48,10 +48,6 @@ namespace Problem1
 
         public void AddSemesterAndSubjects(int semesterNumber, Subject[] subjects)
         {
-            if (CalculateToTalCredits(subjects) > 35)
-            {
-                throw new ArgumentException("Total credits exceeds 35.");
-            }
             Semester semester = new Semester(semesterNumber, subjects);
             _semesters.Add(semester);
         }
@@ -64,17 +60,6 @@ namespace Problem1
                 throw new ArgumentException("There is no such a semester.");
             }
             semester.AddSubject(subject);
-        }
-
-        private int CalculateToTalCredits(Subject[] subjects)
-        {
-            int sumCredits = 0;
-            for (int i = 0; i < subjects.Length; ++i)
-            {
-                sumCredits = subjects[i].Credits + sumCredits;
-            }
-
-            return sumCredits;
         }
 
         public void DisplayInformationOfSubjects(int[] semesterNumbers)
